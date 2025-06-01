@@ -14,3 +14,5 @@ public class anderenaam : MonoBehaviour
         
     }
 }
+
+// ive made a change XD
