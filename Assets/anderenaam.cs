@@ -3,7 +3,7 @@ using UnityEngine;
 public class anderenaam : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Start(kys)
     {
         
     }
@@ -16,3 +16,4 @@ public class anderenaam : MonoBehaviour
 }
 
 // ive made a change XD
+// AAAAAAAAAAAAAAAAAAAAAAAAA
