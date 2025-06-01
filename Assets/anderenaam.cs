@@ -3,9 +3,9 @@ using UnityEngine;
 public class anderenaam : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start(kys)
+    void Start()
     {
-        
+        transform.rotation = Quaternion.identity;
     }
 
     // Update is called once per frame
@@ -15,5 +15,3 @@ public class anderenaam : MonoBehaviour
     }
 }
 
-// ive made a change XD
-// AAAAAAAAAAAAAAAAAAAAAAAAA
