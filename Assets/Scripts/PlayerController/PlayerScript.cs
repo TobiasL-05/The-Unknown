@@ -29,8 +29,10 @@ public class PlayerScript : MonoBehaviour
         float yVelocity = rb.linearVelocity.y;
 
         //get direction of input
-        Vector3 walkDir = new Vector3(walkInput.action.ReadValue<Vector2>().x, 0f, walkInput.action.ReadValue<Vector2>().y) * walkSpeed;
+        Vector3 walkDir = new Vector3(walkInput.action.ReadValue<Vector2>().x, 0f, walkInput.action.ReadValue<Vector2>().y);
         walkDir = cameraTransform.rotation * walkDir;
+        walkDir.y = 0;
+        walkDir = walkDir.normalized * walkSpeed;
 
 
         //make rigidbody move in direction of input
