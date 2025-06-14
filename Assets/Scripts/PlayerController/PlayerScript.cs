@@ -8,7 +8,7 @@ public class PlayerScript : MonoBehaviour
 
     [SerializeField] private string walkInputName;
     [SerializeField] private float walkSpeed;
-    private InputAction walkInput;
+    [SerializeField] private InputActionReference walkInput;
     private Rigidbody rb;
 
     private Transform cameraTransform;
@@ -16,7 +16,7 @@ public class PlayerScript : MonoBehaviour
     void Start()
     {
         //get inputs
-        walkInput = InputSystem.actions.FindAction(walkInputName);
+        //walkInput = InputSystem.actions.FindAction(walkInputName);
 
         rb = GetComponent<Rigidbody>();
 
@@ -29,7 +29,7 @@ public class PlayerScript : MonoBehaviour
         float yVelocity = rb.linearVelocity.y;
 
         //get direction of input
-        Vector3 walkDir = new Vector3(walkInput.ReadValue<Vector2>().x, 0f, walkInput.ReadValue<Vector2>().y) * walkSpeed;
+        Vector3 walkDir = new Vector3(walkInput.action.ReadValue<Vector2>().x, 0f, walkInput.action.ReadValue<Vector2>().y) * walkSpeed;
         walkDir = cameraTransform.rotation * walkDir;
 
 
