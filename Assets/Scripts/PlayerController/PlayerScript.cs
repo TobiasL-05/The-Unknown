@@ -7,34 +7,40 @@ public class PlayerScript : MonoBehaviour
 {
 
     [SerializeField] private string walkInputName;
+    [SerializeField] private float walkSpeed;
     private InputAction walkInput;
+    private Rigidbody rb;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    private Transform cameraTransform;
+
     void Start()
     {
-        transform.rotation = Quaternion.identity;
+        //get inputs
         walkInput = InputSystem.actions.FindAction(walkInputName);
 
-        walkInput.performed += Walk;
+        rb = GetComponent<Rigidbody>();
+
+        cameraTransform = Camera.main.transform;
     }
 
-
-    private void OnEnable()
+    void FixedUpdate()
     {
+        //store rigidbody y velocity
+        float yVelocity = rb.linearVelocity.y;
 
-    }
+        //get direction of input
+        Vector3 walkDir = new Vector3(walkInput.ReadValue<Vector2>().x, 0f, walkInput.ReadValue<Vector2>().y) * walkSpeed;
+        walkDir = cameraTransform.rotation * walkDir;
 
-    // Update is called once per frame
-    void Update()
-    {
-        Vector2 walkDir = walkInput.ReadValue<Vector2>();
 
+        //make rigidbody move in direction of input
+        rb.linearVelocity = new Vector3(walkDir.x, yVelocity, walkDir.z);
         Debug.Log("Walking in direction: " + walkDir);
     }
 
-    void Walk(InputAction.CallbackContext context)
+    void Attack(InputAction.CallbackContext context)
     {
-        Debug.Log("Walking");
+        
     }
 }
 
